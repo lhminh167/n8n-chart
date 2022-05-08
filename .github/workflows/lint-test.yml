@@ -32,11 +32,11 @@ jobs:
           fi
 
       - name: Run chart-testing (lint)
-        run: ct lint --chart-dirs .
+        run: ct lint --target-branch ${{ github.event.repository.default_branch }} --chart-dirs .
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.2.0
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --chart-dirs .
+        run: ct install --target-branch ${{ github.event.repository.default_branch }} --chart-dirs .
