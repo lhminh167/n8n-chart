@@ -7,11 +7,6 @@ dependencies:
     version: "15.x.x"
     repository: "https://charts.bitnami.com/bitnami"
 
-  - name: postgresql
-    version: "11.x"
-    repository: "https://charts.bitnami.com/bitnami"
-    condition: postgresql.enabled
-
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
