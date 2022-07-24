@@ -3,13 +3,14 @@ name: n8n
 description: A Helm chart for n8n.io
 
 dependencies:
-- name: redis
-  version: "15.x.x"
-  repository: "https://charts.bitnami.com/bitnami"
+  - name: redis
+    version: "15.x.x"
+    repository: "https://charts.bitnami.com/bitnami"
 
-- name: postgresql
-  version: "11.x"
-  repository: "https://charts.bitnami.com/bitnami"
+  - name: postgresql
+    version: "11.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
 
 type: application
 

@@ -41,12 +41,21 @@ n8n:
 
 # values for PostgreSql helm chart
 postgresql:
-  enabled: true
+  enabled: false
   postgresqlUsername: n8n
   postgresqlDatabase: n8n
   postgresqlPassword: "N8nPassW0r$"
   persistence:
     size: 1Gi
+
+# values for MySQL DB helm chart
+mysql:
+  enabled: true
+  dbName: "n8n"
+  host: "mysql-innodbcluster"
+  port: "3306"
+  username: "root"
+  password: "1234"
 
 imagePullSecrets: []
 nameOverride: ""

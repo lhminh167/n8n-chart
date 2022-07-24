@@ -3,11 +3,22 @@ apiVersion: v1
 metadata:
   name: {{ include "n8n.fullname" . }}
 data:
-  {{ if .Values.postgresql.enabled }}DB_TYPE: "postgresdb" {{ end }}
+  {{ if .Values.postgresql.enabled }}
+  DB_TYPE: "postgresdb"
   DB_POSTGRESDB_HOST: {{ include "n8n.fullname" . }}-postgresql
   DB_POSTGRESDB_USER: {{ .Values.postgresql.postgresqlUsername }}
   DB_POSTGRESDB_DATABASE: {{ .Values.postgresql.postgresqlDatabase }}
   DB_POSTGRESDB_PASSWORD: {{ .Values.postgresql.postgresqlPassword }}
+  {{ end }}
+
+  {{ if .Values.mysql.enabled }}
+  DB_TYPE: "mysqldb"
+  DB_MYSQLDB_DATABASE: "n8n"
+  DB_MYSQLDB_HOST: "mysql-innodbcluster"
+  DB_MYSQLDB_PORT: "3306"
+  DB_MYSQLDB_USER: "root"
+  DB_MYSQLDB_PASSWORD: "1234"
+  {{ end }}
 
   QUEUE_BULL_REDIS_HOST: {{ include "n8n.fullname" . }}-redis-headless
   QUEUE_BULL_REDIS_PORT: "6379"
