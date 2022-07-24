@@ -5,11 +5,11 @@ metadata:
 data:
   {{ if .Values.mysql.enabled }}
   DB_TYPE: "mysqldb"
-  DB_MYSQLDB_DATABASE: {{ .Values.mysql.dbName }}
-  DB_MYSQLDB_HOST: {{ .Values.mysql.host }}
-  DB_MYSQLDB_PORT: {{ .Values.mysql.port }}
-  DB_MYSQLDB_USER: {{ .Values.mysql.username }}
-  DB_MYSQLDB_PASSWORD: {{ .Values.mysql.password }}
+  DB_MYSQLDB_DATABASE: {{ .Values.mysql.dbName | quote }}
+  DB_MYSQLDB_HOST: {{ .Values.mysql.host | quote }}
+  DB_MYSQLDB_PORT: {{ .Values.mysql.port | quote }}
+  DB_MYSQLDB_USER: {{ .Values.mysql.username | quote }}
+  DB_MYSQLDB_PASSWORD: {{ .Values.mysql.password | quote }}
   {{ end }}
 
   QUEUE_BULL_REDIS_HOST: {{ include "n8n.fullname" . }}-redis-headless
